@@ -13,7 +13,7 @@ export class WeatherHomeComponent implements OnInit, OnDestroy{
   private readonly destroy$: Subject<void> = new Subject;
 
   public initialCityName:string = 'Ribeirão Preto';
-  public watherDatas!:WeatherDatas;
+  public weatherDatas!:WeatherDatas;
   searchIcon = faMagnifyingGlass;
 
   constructor(private weatherService: WeatherService){}
@@ -28,8 +28,8 @@ getWeatherDatas(cityName: string): void {
     .pipe(takeUntil(this.destroy$))
     .subscribe({
       next: (response) => {
-        this.watherDatas = response;
-        console.log(this.watherDatas.main.temp);
+        this.weatherDatas = response;
+        console.log(this.weatherDatas.main.temp);
       },
       error: (error) => {
         console.log('Erro');
